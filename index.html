@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Deutsch Daily</title>
+  <meta name="description" content="Learn to speak German fast: daily sentences, conversations, new words and speaking practice.">
+  <meta name="theme-color" content="#d6312b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Deutsch Daily">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>Deutsch Daily</h1>
+      <p id="stats" class="muted"></p>
+    </div>
+    <button id="btn-settings" class="ghost icon" type="button" aria-label="Settings">⚙️</button>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button type="button" role="tab" data-view="today" class="active">📖 Today</button>
+    <button type="button" role="tab" data-view="review">🔁 Review <span id="due-badge" class="badge" hidden></span></button>
+    <button type="button" role="tab" data-view="mine">⭐ Phrases</button>
+    <button type="button" role="tab" data-view="path">🗺️ 90 days</button>
+  </nav>
+
+  <main>
+    <section id="view-today" class="view"></section>
+    <section id="view-review" class="view" hidden></section>
+    <section id="view-mine" class="view" hidden></section>
+    <section id="view-path" class="view" hidden></section>
+  </main>
+
+  <dialog id="settings">
+    <form method="dialog" class="settings">
+      <h3>Settings</h3>
+      <label>Speaking speed <span id="rate-label" class="muted"></span>
+        <input type="range" id="rate" min="0.6" max="1.1" step="0.05">
+      </label>
+      <label class="check"><input type="checkbox" id="show-en"> Show English translations</label>
+      <button type="button" class="ghost" id="test-voice">🔊 Test German voice</button>
+
+      <div class="group">
+        <label class="check"><input type="checkbox" id="remind-on"> Daily reminder</label>
+        <label class="inline">at <input type="time" id="remind-time"></label>
+        <p class="muted small">Works while the app is open, even in the background.</p>
+      </div>
+
+      <div class="group">
+        <button type="button" class="ghost" id="export">⬇️ Export backup</button>
+        <button type="button" class="ghost" id="import">⬆️ Import backup</button>
+        <p class="muted small">Use a backup to move your progress to another device or browser.</p>
+      </div>
+
+      <button type="button" class="ghost danger" id="reset">⟲ Reset all progress</button>
+      <button value="close" class="primary">Done</button>
+    </form>
+  </dialog>
+
+  <input type="file" id="import-file" accept="application/json,.json" hidden>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="data.js"></script>
+  <script src="extra.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
